@@ -35,10 +35,12 @@ body {
   top: 0;
   align-self: start;
   overflow-y: scroll;
+  scrollbar-width: thin; /* Options: auto, thin, none */
 }
 
+/*? scroll bar styles */
 #sidebar::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 #sidebar::-webkit-scrollbar-track {
@@ -50,6 +52,7 @@ body {
   border-radius: 10px;
   border: 1px solid var(--scrollbar-track);
 }
+/*? scroll bar styles end */
 
 #sidebar ul {
   list-style: none;
@@ -94,7 +97,56 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  /*? El box-sizing previene que el padding agrande el label */
+  box-sizing: border-box;
 }
+
+#sidebar svg {
+  flex-shrink: 0;
+  fill: var(--text-color);
+}
+
+#sidebar a span,
+#sidebar .dropdown-btn span {
+  flex-grow: 1;
+}
+
+#sidebar a:hover,
+#sidebar .dropdown-btn:hover {
+  background-color: var(--base-color-light);
+  color: var(--base-color);
+}
+
+#sidebar .sub-menu {
+  /* ! No se puede animar ni transicionar la altura */
+  /* overflow: hidden;
+  height: 0; */
+  /*? En este caso podemo usar este truco con grid de animar el ancho de la fila */
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-in-out;
+
+  > div {
+    overflow: hidden;
+  }
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* #sidebar .sub-menu.show {
+
+} */
+
+/* #sidebar li:hover .sub-menu {
+  grid-template-rows: 1fr;
+} */
+
+/* #todo-activate:checked ~ .sub-menu,
+#create-activate:checked ~ .sub-menu {
+  grid-template-rows: 1fr;
+} */
 
 /** Main content */
 main {
