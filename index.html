@@ -7,6 +7,9 @@
     <title>Home</title>
     <link rel="stylesheet"
           href="style.css">
+    <script type="text/javascript"
+            src="./app.js"
+            defer></script>
   </head>
   <body>
     <nav id="sidebar">
@@ -21,7 +24,9 @@
             </svg>
             <span>INVERTEX</span>
           </a>
-          <button class="toggle-btn">
+          <button 
+          onclick="toggleSidebar()"
+          id="toggle-btn">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="24"
                  height="24">
@@ -55,7 +60,8 @@
         <li>
           <input type="checkbox"
                  id="create-activate">
-          <label for="create-activate"
+          <label onclick="toggleSubMenu(this)"
+                 for="create-activate"
                  class="dropdown-btn">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="24"
@@ -83,7 +89,8 @@
         <li>
           <input type="checkbox"
                  id="todo-activate">
-          <label for="todo-activate"
+          <label onclick="toggleSubMenu(this)"
+                 for="todo-activate"
                  class="dropdown-btn">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="24"

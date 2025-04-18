@@ -34,8 +34,58 @@ body {
   position: sticky;
   top: 0;
   align-self: start;
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
   scrollbar-width: thin; /* Options: auto, thin, none */
+  transition: all 3s ease-in-out;
+  text-wrap: nowrap;
+}
+
+#sidebar.close {
+  padding: 0em;
+  width: 60px;
+
+  /*? to disaper the text into the sidebar menu options */
+  span {
+    display: none;
+  }
+
+  /* ? to disapear the main logo in the sidebar  */
+  ul .logo > a > svg {
+    display: none;
+  }
+
+  /*? to center the toggle button in the sidebar */
+  ul .logo {
+    justify-content: center;
+  }
+
+  /*? to palce the options icons in the start of the sidebar  */
+  ul li,
+  label {
+    display: flex;
+    justify-content: start;
+  }
+
+  /*? to desaper the botton-arrow in the dropdown buttons */
+  ul li label svg:last-child {
+    display: none;
+  }
+
+  /*? to disapear the sub-menu options in the sidebar */
+  ul li .sub-menu {
+    display: none;
+  }
+
+  /* .logo a {
+    margin: 20px 0px;
+  } */
+
+  /* :is(a, label) {
+    justify-content: start;
+    width: auto;
+    /* margin: 0px 8%; 
+  } */
 }
 
 /*? scroll bar styles */
@@ -70,15 +120,21 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 0em;
   }
+}
+
+/* ? to add a transition effect to svg icons when the sidebar is open or closed  */
+#sidebar > ul:first-child svg {
+  transition: transform 0.3s ease-in-out;
 }
 
 #sidebar ul li.active a {
   color: var(--secondary-color);
 }
 
+/*! Styles for the sidebar options */
 #sidebar a,
 #sidebar .dropdown-btn {
   border-radius: 0.5em;
@@ -87,11 +143,12 @@ body {
   color: var(--text-color);
   display: flex;
   align-items: center;
+  /* justify-content: center; */
   gap: 1rem;
 }
 
 .dropdown-btn {
-  width: 100%;
+  /* width: 100%; */
   font-size: inherit;
   text-align: left;
   background: none;
@@ -135,10 +192,12 @@ input[type="checkbox"] {
   display: none;
 }
 
-/* #sidebar .sub-menu.show {
+/* ? this class is to use with javascript */
+#sidebar .sub-menu.show {
+  grid-template-rows: 1fr;
+}
 
-} */
-
+/* ? This clases is to activate the sub-menu wihtout javascript */
 /* #sidebar li:hover .sub-menu {
   grid-template-rows: 1fr;
 } */
@@ -147,6 +206,38 @@ input[type="checkbox"] {
 #create-activate:checked ~ .sub-menu {
   grid-template-rows: 1fr;
 } */
+
+.rotate svg:last-child {
+  transform: rotate(180deg);
+}
+
+/*? add a transition for the last svg in the label to rotate when the sub-menu is open7 */
+.dropdown-btn svg {
+  transition: transform 0.3s ease-in-out;
+}
+
+#sidebar .sub-menu a {
+  padding-left: 2em;
+}
+
+#toggle-btn {
+  /* margin-left: auto; */
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.5em;
+  background: none;
+  cursor: pointer;
+  color: var(--text-color);
+
+  svg {
+    transition: rotate 0.3s ease-in-out;
+  }
+}
+
+#toggle-btn:hover {
+  background-color: var(--base-color-light);
+  color: var(--base-color);
+}
 
 /** Main content */
 main {
